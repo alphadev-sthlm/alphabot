@@ -1,0 +1,2 @@
+# alphabot
+Our slackbot
