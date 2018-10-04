@@ -2,7 +2,8 @@ import os
 import dotenv
 from os import path, environ
 
-dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+dir = os.path.dirname
+dotenv_path = os.path.join(dir(dir(__file__)), '.env')
 dotenv.load_dotenv(dotenv_path)
 
 

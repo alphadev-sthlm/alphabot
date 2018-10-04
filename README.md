@@ -11,15 +11,13 @@ Get pip
 Get virtualenv
 
     sudo pip install virtualenv
-    virtualenv env
-    source env/bin/activate
+    virtualenv -p python3 venv
+    source venv/bin/activate
     pip install -r requirements.txt
 
+Create .env file and insert SLACK_TOKEN
 
-Create .env file
-
-    SLACK_API_TOKEN=XXXX
-    APP_ENV=development
+    cp .env.example .env
 
 Run locally
 
