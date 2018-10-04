@@ -1,4 +1,4 @@
-# alphabot
+# alphabot [![Build Status](https://travis-ci.org/alphadev-sthlm/alphabot.svg?branch=master)](https://travis-ci.org/alphadev-sthlm/alphabot)
 Our slackbot
 
 ## Setup
