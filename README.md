@@ -15,13 +15,17 @@ Get virtualenv
     source venv/bin/activate
     pip install -r requirements.txt
 
-Create .env file and insert SLACK_TOKEN
+Create .env file and insert SLACK_TOKEN found https://api.slack.com/apps under Basic Information for app. 
 
     cp .env.example .env
 
 Run locally
 
     python alphabot.py
+    
+Run tests
+
+    python -m pytest tests
 
 Deploy (will create lambda with -dev suffix)
 
