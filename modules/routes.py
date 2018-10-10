@@ -17,6 +17,15 @@ def register_routes(app):
             'channel': get_env('SLACK_CHANNEL')
         })
 
+    @app.route("/users", methods=["GET"])
+    def users():
+        user_list = slackhelper.user_list()
+        users = []
+        for user in user_list['members']:
+            if not user['deleted'] and not user['is_bot'] and user['name'] != 'slackbot':
+                users.append(user['profile']['real_name'])
+        return jsonify(users)
+
     @app.route('/slash', methods=['POST'])
     def slash():
         payload = {

@@ -47,3 +47,6 @@ class SlackHelper:
             user=uid,
             token=self.slack_token
         )
+
+    def user_list(self):
+        return self.slack_client.api_call("users.list")
