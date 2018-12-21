@@ -1,5 +1,5 @@
 from slackclient import SlackClient
-from config import get_env
+from alphabotapp.config import get_env
 
 
 class SlackHelper:

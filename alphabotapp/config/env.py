@@ -1,6 +1,3 @@
-from config import get_env
-
-
 class EnvConfig(object):
     """Parent configuration class."""
     DEBUG = False
