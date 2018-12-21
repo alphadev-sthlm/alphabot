@@ -18,11 +18,13 @@ def icebreak(params, **kwargs):
                and user['name'] != 'slackbot']
     buddies = []
     for i in range(0, number_of_companions):
-        buddies.append(random.choice(friends))
+        choice = random.choice(friends)
+        buddies.append(choice)
+        friends.remove(choice)
     payload = {
         'response_type': 'in_channel',
-        'text': 'Dags för lunch med @' + request.form['user_name'] + ' @' + ' och @'.join(
-            [user['name'] for user in buddies])
+        'text': 'Dags för lunch med @' + ', @'.join([user['name'] for user in buddies])
+                + ' och @' + request.form['user_name']
     }
     return payload
 

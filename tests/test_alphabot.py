@@ -1,4 +1,5 @@
 import os
+import re
 import tempfile
 
 import pytest
@@ -22,9 +23,9 @@ def root(client):
     return client.get('/')
 
 
-def slash(client, data):
-    return client.post('/slash', data=dict(
-        test='test'
+def alphabot(client, data):
+    return client.post('/alphabot', data=dict(
+        text=data
     ), follow_redirects=True)
 
 
@@ -35,9 +36,24 @@ def test_root(client):
     assert b'Alphabot running in development' in rv.data
 
 
-def test_slash(client):
+def test_alphabot_help(client):
+    """Test post alphabot without arguments"""
+
+    rv = alphabot(client, '')
+    assert b'List all commands' in rv.data
+
+
+def test_alphabot_eko(client):
+    """Test eko a word"""
+
+    rv = alphabot(client, 'eko hej')
+    assert b'in_channel' in rv.data
+    assert b'"text": "hej"' in rv.data
+
+
+def test_alphabot_celebrate(client):
     """Test post"""
 
-    rv = slash(client, 'asx')
-    assert b'in_channel' in rv.data
-    assert b'Test response successful!' in rv.data
+    rv = alphabot(client, 'celebrate')
+    regex = re.compile('.*":[a-z_]+:".*')  # some emoji
+    assert regex.match(str(rv.data))
